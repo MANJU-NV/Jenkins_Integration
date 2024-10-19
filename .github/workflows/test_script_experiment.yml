@@ -3,7 +3,8 @@ run-name: ${{ github.actor }} is learning GitHub Actions
 on: [workflow_dispatch]
 jobs:
   check-bats-version:
-    runs-on: ubuntu-latest
+    runs-on: 
+      labels: automation
     steps:
       - name: Repo Set Up
         uses: actions/checkout@v4
