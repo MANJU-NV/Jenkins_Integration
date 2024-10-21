@@ -1,19 +1,23 @@
-name: learn-github-actions
-run-name: ${{ github.actor }} is learning GitHub Actions
-on: [workflow_dispatch]
+name: Github Workflow Experiment 
+run-name: ${{ github.actor}} learning git workflows by own project
+on: [push, workflow_dispatch]
 jobs:
-  check-bats-version:
-    runs-on: 
+  Excel-Operations:
+    runs-on:
       labels: automation
     steps:
-      - name: Repo Set Up
+      - name: Repo Setup
         uses: actions/checkout@v4
-      - name: Repo Set Up
+      - name: Install Node JS
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm install -g bats
-      - run: bats -v
-      - run: echo "Running Test"
-      - run: npm test
-      - run: echo "COmpleted Test"
+      - name: Install Dependencies
+        run: npm ci
+      - name: Run Test Scripts
+        run: node test
+        
+    
+
+
+  
