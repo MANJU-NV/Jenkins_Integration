@@ -16,6 +16,7 @@ jobs:
         run: npm ci
       - name: Run Test Scripts
         run: npm test  
+      - uses: actions/checkout@v4
       - name: Setting up java  gradlew
         uses: actions/setup-java@v4
         with:
