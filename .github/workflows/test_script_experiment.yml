@@ -16,8 +16,13 @@ jobs:
         run: npm ci
       - name: Run Test Scripts
         run: npm test  
-      - name: Grant execute permission for gradlew
-        run: chmod +x ./gradlew
+      - name: Setting up java  gradlew
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
+      - run: ./gradlew build --no-daemon
       - name: Run connected tests
         uses: ReactiveCircus/android-emulator-runner@v2
         with:
