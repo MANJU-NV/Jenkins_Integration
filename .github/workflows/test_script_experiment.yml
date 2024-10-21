@@ -3,8 +3,7 @@ run-name: ${{ github.actor}} learning git workflows by own project
 on: [push, workflow_dispatch]
 jobs:
   Excel-Operations:
-    runs-on:
-      labels: automation
+    runs-on: macOS_latest
     steps:
       - name: Repo Setup
         uses: actions/checkout@v4
