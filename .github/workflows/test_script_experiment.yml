@@ -1,6 +1,6 @@
 name: Github Workflow Experiment 
 run-name: ${{ github.actor}} learning git workflows by own project
-on: [push, workflow_dispatch]
+on: [workflow_dispatch]
 jobs:
   Excel-Operations:
     runs-on:
