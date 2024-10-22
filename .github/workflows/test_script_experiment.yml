@@ -3,7 +3,8 @@ run-name: ${{ github.actor}} learning git workflows by own project
 on: [push, workflow_dispatch]
 jobs:
   Excel-Operations:
-    runs-on: macos-14
+    runs-on:
+     labels: automation
     steps:
       - name: Repo Setup
         uses: actions/checkout@v4
@@ -19,6 +20,7 @@ jobs:
         uses: gradle/gradle-build-action@v2
       - name: Run build with Gradle Wrapper
         run: ./gradlew build
+  
       
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
