@@ -3,7 +3,7 @@ run-name: ${{ github.actor}} learning git workflows by own project
 on: [push, workflow_dispatch]
 jobs:
   Excel-Operations:
-    runs-on: ubuntu-latest
+    runs-on: macos-14
     steps:
       - name: Repo Setup
         uses: actions/checkout@v4
@@ -20,14 +20,21 @@ jobs:
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
       - name: Gradle cache
         uses: gradle/actions/setup-gradle@v4
       - name: Run connected tests
         uses: ReactiveCircus/android-emulator-runner@v2
         with:
-          api-level: 31
+          api-level: 28
           target: google_apis
           script: ./gradlew connectedCheck
+          profile: pixel_6_pro
       - name: Check Connected Devices
         run: adb devices
     
