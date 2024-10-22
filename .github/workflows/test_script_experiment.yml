@@ -14,7 +14,11 @@ jobs:
       - name: Install Dependencies
         run: npm ci
       - name: Run Test Scripts
-        run: npm test  
+        run: npm test 
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+      - name: Run build with Gradle Wrapper
+        run: ./gradlew build
       
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
