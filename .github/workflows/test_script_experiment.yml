@@ -18,13 +18,7 @@ jobs:
         run: npm test 
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
-      - name: Run build with Gradle Wrapper
-        run: ./gradlew build
-  
       
-      - name: Change wrapper permissions
-        run: chmod +x ./gradlew
-
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
@@ -33,7 +27,7 @@ jobs:
       - name: Run connected tests
         uses: ReactiveCircus/android-emulator-runner@v2
         with:
-          api-level: 28
+          api-level: 30
           target: google_apis
           script: ./gradlew connectedCheck
           profile: pixel_6_pro
