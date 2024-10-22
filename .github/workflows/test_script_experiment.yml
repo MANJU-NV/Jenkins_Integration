@@ -27,10 +27,10 @@ jobs:
       - name: Run connected tests
         uses: ReactiveCircus/android-emulator-runner@v2
         with:
-          api-level: 30
+          api-level: 31
           target: google_apis
           script: ./gradlew connectedCheck
-          profile: pixel_6_pro
+
       - name: Check Connected Devices
         run: adb devices
     
