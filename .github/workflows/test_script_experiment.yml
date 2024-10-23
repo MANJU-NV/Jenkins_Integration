@@ -1,6 +1,6 @@
 name: Github Workflow Experiment 
 run-name: ${{ github.actor}} learning git workflows by own project
-on: [workflow_dispatch]
+on: [push , workflow_dispatch]
 jobs:
   Excel-Operations:
     runs-on:
@@ -16,25 +16,13 @@ jobs:
         run: npm ci
       - name: Run Test Scripts
         run: npm test 
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
       
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
-
-      - name: Gradle cache
-        uses: gradle/actions/setup-gradle@v4
-      - name: Run connected tests
-        uses: ReactiveCircus/android-emulator-runner@v2
-        with:
-          api-level: 31
-          target: google_apis
-          arch: arm64-v8a
-          script: ./gradlew connectedCheck
           
 
       - name: Check Connected Devices
-        run: adb devices
+        run: flutter emulators --launch tests
     
 
 
