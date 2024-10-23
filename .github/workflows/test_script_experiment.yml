@@ -22,7 +22,7 @@ jobs:
           
 
       - name: Check Connected Devices
-        run: flutter emulators --launch tests
+        run: flutter emulators --launch test
     
 
 
