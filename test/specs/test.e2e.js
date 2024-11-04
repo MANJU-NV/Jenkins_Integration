@@ -10,7 +10,7 @@ describe('My Login application', () => {
         await expect(SecurePage.flashAlert).toBeExisting()
         await expect(SecurePage.flashAlert).toHaveText(
             expect.stringContaining('You logged into a secure area!'))
-      //  await expect(SecurePage.flashAlert).toMatchElementSnapshot('flashAlert')
+        await expect(SecurePage.flashAlert).toMatchElementSnapshot('flashAlert')
     })
 })
 
