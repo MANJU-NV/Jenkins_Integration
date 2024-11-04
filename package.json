@@ -4,12 +4,20 @@
   "description": "Excel Automation with Jenkins Integration",
   "main": "run.js",
   "scripts": {
-    "test": "node run.js"
+    "test": "node run.js",
+    "wdio": "wdio run ./wdio.conf.js"
   },
   "author": "Manju V",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.7.7",
     "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@wdio/cli": "^9.2.8",
+    "@wdio/local-runner": "^9.2.8",
+    "@wdio/mocha-framework": "^9.2.8",
+    "@wdio/visual-service": "^6.2.1",
+    "appium-uiautomator2-driver": "^3.8.1"
   }
 }

@@ -22,7 +22,21 @@ jobs:
           
 
       - name: Check Connected Devices
-        run: flutter emulators --launch test
+        run: flutter emulators --launch Pixel 7 Pro
+      
+      - name: Launch application on Connected Device
+        run: npm run wdio
+      
+      - name: Upload test artifacts
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-artifacts
+          path: path/to/screenshots-or-logs
+
+      - name: Stop Android emulator
+        if: always()
+        run: adb -s emulator-5554 emu kill
     
 
 
