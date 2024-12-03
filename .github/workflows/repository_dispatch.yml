@@ -32,6 +32,7 @@ jobs:
           echo "Received Key1: ${{ github.event.client_payload.version_name}}"
           echo "Input 1: ${{ github.event.client_payload.version_code}}"
           echo "Input 2: ${{ github.event.inputs.version_code}}"
+          echo "Inputs: ${{ toJSON(github.event.client_payload.github.event.inputs) }}"
           
       - name: print only if repository dispatch
         if: ${{ !github.event.issue.pull_request && github.event.issue.number == 2 || github.event_name == 'repository_dispatch' }}
