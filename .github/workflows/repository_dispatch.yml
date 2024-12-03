@@ -1,0 +1,34 @@
+name: run the workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'name'
+        required: true
+  repository_dispatch:
+    types: [ my-event ]
+  issue_comment:
+    types: [ created ]  
+
+jobs:
+  build:
+    name: run-workflow
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: print trigger details
+        run: |
+          echo ${{ github.event_name }}
+          echo ${{ github.event.client_payload.github.action }}
+          echo ${{ github.event.client_payload.github.actor }}
+          echo ${{ inputs.name }}
+          
+      - name: print only if repository dispatch
+        if: ${{ !github.event.issue.pull_request && github.event.issue.number == 2 || github.event_name == 'repository_dispatch' }}
+        run: |
+          echo ${{ github.event_name }}
