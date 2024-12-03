@@ -27,6 +27,10 @@ jobs:
           echo ${{ github.event.client_payload.github.action }}
           echo ${{ github.event.client_payload.github.actor }}
           echo ${{ inputs.name }}
+      - name: print input details
+        run: |
+          echo "Input 1: ${{ github.event.inputs.version_name}}"
+          echo "Input 2: ${{ github.event.inputs.version_code}}"
           
       - name: print only if repository dispatch
         if: ${{ !github.event.issue.pull_request && github.event.issue.number == 2 || github.event_name == 'repository_dispatch' }}
