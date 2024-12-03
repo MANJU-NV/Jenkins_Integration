@@ -29,7 +29,8 @@ jobs:
           echo ${{ inputs.name }}
       - name: print input details
         run: |
-          echo "Input 1: ${{ github.event.inputs.version_name}}"
+          echo "Received Key1: ${{ github.event.client_payload.version_name}}"
+          echo "Input 1: ${{ github.event.client_payload.version_code}}"
           echo "Input 2: ${{ github.event.inputs.version_code}}"
           
       - name: print only if repository dispatch
